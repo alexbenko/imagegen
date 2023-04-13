@@ -5,7 +5,7 @@ import { SP } from "next/dist/shared/lib/utils";
 export default function ImageGeneration(){
   function Spinner(){
     return (
-      <div>
+      <div style={{'margin': '0 auto'}}>
         <div className={styles.spinner}></div>
         <div>Generating Images ...</div>
       </div>
@@ -50,7 +50,7 @@ export default function ImageGeneration(){
       }),
     });
     const data = await res.json()
-    console.log(data.links)
+
     setImages(data.links);
     setRequestInProgress(false);
   }
@@ -63,7 +63,7 @@ export default function ImageGeneration(){
   };
 
   return (
-    <>
+    <div className={styles.root}>
       <form onSubmit={handleSubmit} className={styles.textareaWrapper}>
         <label htmlFor="text" className={styles.textareaLabel}>
           Enter Prompt:
@@ -94,6 +94,6 @@ export default function ImageGeneration(){
 
         ))}
       </div>
-    </>
+    </div>
   )
 }
